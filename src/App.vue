@@ -3,13 +3,18 @@
 </template>
 
 <script>
-import Navigation from './views/components/base/Navigation.vue'
-export default {
-    setup(){
+    import Navigation from './views/components/base/Navigation.vue'
+    export default {
+        components: {
+            Navigation
+        },
+        setup(){
 
-        return{ }
+            return{
+
+            }
+        }
     }
-}
 </script>
 
 <style>

@@ -7,7 +7,7 @@
  */
  -->
  <template>
-    <div id="App">
+    <div>
       <div class="affix-container">
         <el-affix target=".affix-container" :offset="20">
           <el-col :span="8">
@@ -15,6 +15,21 @@
               <el-image class="header-navigation-logo" :src="imageUrl"/>
               <div class="header-navigation-menuHeader">
                  <div v-for="number in 4" :key="number" class="text item">{{ '题库'}}</div>
+              </div>
+              <div class="header-navigation-search">
+                <el-input v-model="input2" class="searchInput" placeholder="Please Input" />
+              </div>
+              <div class="header-navigation-icon-message">
+                <el-icon class="icon-message" :size="30">
+                  <Message />
+                </el-icon>
+              </div>
+              <div class="header-navigation-icon-avatar">
+                <el-avatar :size="45" src="https://empty" @error="errorHandler">
+                  <img
+                    src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+                  />
+                </el-avatar>
               </div>
             </el-card>
           </el-col>
@@ -26,16 +41,28 @@
   <script>
     export default {
       name: 'Navigation',
+      // 定义组件内部属性参数
       props: {
-        msg: String,
+        imageUrl: {
+          type: String,
+          default: "https://sinsyedu.oss-cn-hangzhou.aliyuncs.com/img/logo.png",
+          required: false
+        },
+        searchText: {
+          type: String,
+          default: "",
+          required: false
+        }
       },
-      setup() {
-        const imageUrl = 'https://sinsyedu.oss-cn-hangzhou.aliyuncs.com/img/logo.png';
-        return {imageUrl}
+      setup(props) {
+        const imageUrl = "https://sinsyedu.oss-cn-hangzhou.aliyuncs.com/img/logo.png"
+        const searchText = ""
+        return {imageUrl,searchText}
       },
     }
   </script>
   
+  <!-- 组件定制化样式 -->
   <style lang="scss" scoped>
     .affix-container {
       height: 1440px;
@@ -49,7 +76,7 @@
       height: 60pt;
       border-radius: 15px;
       margin: 0 auto;
-      
+      position: relative;
     }
     ::v-deep .header-navigation-logo{
       height: 80pt;
@@ -75,5 +102,25 @@
     .header-navigation-menuHeader{
       margin-top: -70px;
       margin-left: 300pt;
+    }
+    .header-navigation-search{
+      position: absolute;
+      right: 178px;
+      top: 25px;
+    }
+    .searchInput{
+      height: 35px;
+      width: 220px;
+      border-radius: 8px;
+    }
+    .header-navigation-icon-message{
+      position: absolute;
+      right: 118px;
+      top: 27px;
+    }
+    .header-navigation-icon-avatar{
+      position: absolute;
+      right: 48px;
+      top: 20px;
     }
   </style>
