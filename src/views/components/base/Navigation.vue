@@ -20,9 +20,11 @@
                 <el-input v-model="input2" class="searchInput" placeholder="Please Input" />
               </div>
               <div class="header-navigation-icon-message">
-                <el-icon class="icon-message" :size="30">
-                  <Message />
-                </el-icon>
+                <el-badge :value="3" class="header-navigation-icon-message-badge">
+                  <el-icon class="icon-message" :size="32">
+                    <Message />
+                  </el-icon>
+                </el-badge>
               </div>
               <div class="header-navigation-icon-avatar">
                 <el-avatar :size="45" src="https://empty" @error="errorHandler">
